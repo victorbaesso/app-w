@@ -1,0 +1,31 @@
+{
+  "name": "app-w",
+  "version": "1.0.0",
+  "description": "CRUD de produtos, empresas e series",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorbae/app-w.git"
+  },
+  "keywords": [
+    "crud",
+    "produtos",
+    "empresas",
+    "series",
+    "nodejs"
+  ],
+  "author": "Varios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorbae/app-w/issues"
+  },
+  "homepage": "https://github.com/victorbae/app-w#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.0"
+  }
+}
