@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+
+	<link rel="icon" href="img/login.png" />
+	<link rel="stylesheet" href="../assets/css/style-login.css">
+
+</head>
+
+<body>
+
+
+	<div class="vid-container">
+
+		<img class="bgvid" src="../assets/img/bk.jpg" />
+		<div class="inner-container">
+			<img class="bgvid inner" src="../assets/img/bk.jpg"/>
+			<div class="box">
+				<form action="/login" method="post">
+					<h1>Login</h1>
+					<% if(retorno){ %>
+						<span class="alert" style="color:red;">
+							<%= retorno %>
+						</span>
+					<% } %>
+					<input type="text" name="user" placeholder="Usuario"/>
+					<input type="password" name="senha" placeholder="Senha"/>
+					<button type="submit">Entrar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
