@@ -32,4 +32,8 @@ app.get('/logout' , (req, res)=>{
     res.redirect('/login');
 });
 
+app.get('/home',(req, res)=>{
+  res.render('home', {retorno: null});
+})
+
 app.listen(3000, ()=> console.log('Listening on localhost:3000'));
