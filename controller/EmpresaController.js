@@ -1,7 +1,7 @@
 const router = require('express').Router();
 //const repository = require('../repository/EmpresaRepository');
 const Empresa = require('../model/Empresa');
-const service = require('../service/empresaService.js');
+const service = require('../service/EmpresaService.js');
 
 var empresa = new Empresa();
 

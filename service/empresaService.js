@@ -1,7 +1,7 @@
-const Empresa = require('../models/Empresa.js');
+const Empresa = require('../model/Empresa.js');
 
 // falta ver como everson fez no repositories
-const repository = require('../repositories/empresaRepository.js');
+//const repository = require('../repository/EmpresaRepository.js');
 
 var empresa = new Empresa();
 var listaempresas = [];
