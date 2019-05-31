@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista Empresas</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+</head>
+
+<body>
+    <table class="table table-bordered table-hover 
+    table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% lista.forEach((empresa) => { %>
+                <tr>
+                    <td><%= empresa.nome %></td>
+                    <td>
+                        <button class="btn 
+    btn-outline-primary btn-sm" onclick="location.href='/editar/<% empresa.codigo %>'"><i
+                                class="fas fa-pencil-alt"></i></button>
+                        <button class="btn 
+    btn-outline-danger btn-sm" onclick="location.href='/excluir/<% empresa.codigo %>'"><i
+                                class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <script src="../assets/js/bootstrap.js"></script>
+</body>
+</html>
