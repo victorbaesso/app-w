@@ -2,3 +2,12 @@ body{
     background-image: url(../img/home.jpg);
     background-repeat: repeat;   
 }
+ .rodape {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:170px;   /* Mesma Altura do Rodapé */
+    background: #2E2E2E;
+    color: white;
+    text-align: center
+ }
