@@ -16,7 +16,7 @@ app.use('/assets', express.static('assets')); // arquivos sem controller
 //app.use('/home', require('./controllers/HomeController'));
   app.use('/produto', require('./controller/ProdutoController'));
 // app.use('/empresa', require('./controllers/EmpresaController'));
-// app.use('/serie', require('./controllers/SerieController'));
+  app.use('/registro', require('./controller/RegistroController'));
 
 app.get('/',(req, res)=>{
   res.render('login', {retorno: null});
