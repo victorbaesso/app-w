@@ -1,5 +1,4 @@
 const Empresa = require('../model/Empresa.js');
-
 // falta ver como everson fez no repositories
 const repository = require('../repository/EmpresaRepository.js');
 

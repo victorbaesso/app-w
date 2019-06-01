@@ -48,10 +48,12 @@ async function alterar(registro){
 
 async function listar(){
 	await db.collection('registros').find().toArray((erro, registro) => {
-		if(erro) 
+		if(erro){ 
 			console.log(erro); 
-		else 
+			return [];
+		}else{ 
 			return registro;
+		}
 	}); 
 }
 

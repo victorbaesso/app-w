@@ -1,7 +1,5 @@
 class Registro{
-
     constructor(id, empresa, produto, data, valor){
-        
         this.id = id;
         this.empresa = empresa;
         this.produto = produto;
