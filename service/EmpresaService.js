@@ -1,7 +1,7 @@
 const Empresa = require('../model/Empresa.js');
 
 // falta ver como everson fez no repositories
-//const repository = require('../repository/EmpresaRepository.js');
+const repository = require('../repository/EmpresaRepository.js');
 
 var empresa = new Empresa();
 var listaempresas = [];
@@ -29,7 +29,7 @@ const listar = function () {
 }
 
 const excluir = (codigo) => {
-	repository.excluir(codigo);
+	repository.excluiPorId(codigo);
 }
 
 module.exports.salvar = salvar;
