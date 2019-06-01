@@ -2,7 +2,7 @@ var express = require('express');
 const ejs = require('ejs');
 const bodyParser = require("body-parser");// pegar parametros do request
 
-const loginService = require("./service/loginService");
+const loginService = require("./service/LoginService");
 var app = express();
 
 app.set('view engine', 'ejs');
