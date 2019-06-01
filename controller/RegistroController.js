@@ -4,7 +4,7 @@ const Registro = require('../model/Registro');
 
 
 router.get('/lista', async (req, res) => {
-    res.render('/Reg-lista', { registros: await service.buscarTodosRegistros() });
+    res.render('/Reg-lista', { registros: await service.listar() });
 })
 
 router.get('/novo', (req, res) => {
