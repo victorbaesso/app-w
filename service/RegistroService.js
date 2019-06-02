@@ -5,50 +5,41 @@ const EmpresaService = require('../service/EmpresaService.js');
 //const ProdutoService = require('../service/ProdutoService.js');
 const Repository = require('../repository/RegistroRepository.js');
 
-const buscaPorId = async (codigo) => {
-	return await Repository.buscaPorId(codigo);
+const findOne = async (codigo) => {
+	return await Repository.findOne(codigo);
 }
 
-const excluiPorId = (id) => {
-	Repository.excluiPorId(id);
+const excluir = (id) => {
+	Repository.excluir(id);
 }
 
-const salvar = async function(registroToSave) {
+const salvar = function(registroToSave) {
 
 	console.log("codigo empresa a ser buscado: " + registroToSave.empresa.id);
 	console.log("codigo produto a ser buscado: " + registroToSave.produto.id);
 
 	registro = new Registro(
-		registro.id = registroToSave.id || null,
-		registro.empresa = EmpresaService.buscaPorId(registroToSave.empresa.id),
+		registroToSave.id || null,
+		EmpresaService.findOne(registroToSave.empresa.id),
 		//registro.produto = ProdutoService.buscaPorId(registroToSave.produto.id),
-		registro.data = registroToSave.data,
-		registro.valor = registroToSave.valor
+		registroToSave.data,
+		registroToSave.valor
 	);
 
 	console.log("Registro a ser salvo --> Id: " + registro.id + ", Nome da empresa: " +
 	 registro.empresa.nome + ", Nome do produto: " + registro.produto.nome + ", Valor: " + registro.valor
 	 + ", Data: " + registro.data + ";")
-	await save(registro);
-}
+	Repository.salvar(registro);
 
-
-async function save (registro){
-	if (registro.id != null) {
-		await Repository.alterar(registro);
-	} else {
-		registro.id = new Date().getTime();
-		await Repository.inserir(registro);
-	}
 }
 
 const listar = async function () {
 	return await Repository.listar();
 }
 
-module.exports.buscaPorId = buscaPorId;
+module.exports.findOne = findOne;
 
-module.exports.excluiPorId = excluiPorId;
+module.exports.excluir = excluir;
 
 module.exports.salvar = salvar;
 

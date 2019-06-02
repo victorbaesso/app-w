@@ -1,35 +1,23 @@
 const Empresa = require('../model/Empresa.js');
 
-// falta ver como everson fez no repositories
 const repository = require('../repository/EmpresaRepository.js');
 
-var empresa = new Empresa();
 var listaempresas = [];
 
 const salvar = function (salvarEmpresa) {
 
-	empresa.nome = salvarEmpresa.nome;
-
-	if (salvarEmpresa.codigo) {
-		// alterou
-		empresa.codigo = salvarEmpresa.codigo;
-		repository.alterar(empresa);
-	} else {
-		empresa.codigo = new Date().getTime();
-		empresa._id = new ObjectID();
-		//salvou
-		repository.inserir(empresa);
-	}
+	var empresa = new Empresa(salvarEmpresa.id || null, salvarEmpresa.nome);
+	repository.salvar(empresa);
 }
 
-const listar = function () {
-	listaempresas = repository.listar();
+const listar = async function () {
+	listaempresas = await repository.listar();
 
 	return listaempresas;
 }
 
 const excluir = (codigo) => {
-	repository.excluiPorId(codigo);
+	repository.excluir(codigo);
 }
 
 module.exports.salvar = salvar;
