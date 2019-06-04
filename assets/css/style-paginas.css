@@ -1,9 +1,9 @@
-.rodape {
+footer { 
     position:absolute;
     bottom:0;
     width:100%;
-    height:75px;   /* Mesma Altura do Rodapé */
+    height:75px;
     background: #2E2E2E;
     color: white;
-    text-align: center
- }
+    text-align: center;
+}
