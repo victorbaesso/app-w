@@ -10,30 +10,35 @@
 </head>
 
 <body>
-    <table class="table table-bordered table-hover 
-    table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">#</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% lista.forEach(function(empresa) => { %>
-                <tr>
-                    <td><%= empresa.nome %></td>
-                    <td>
-                        <button class="btn 
-    btn-outline-primary btn-sm" onclick="location.href='/editar/<% empresa.codigo %>'"><i
-                                class="fas fa-pencil-alt"></i></button>
-                        <button class="btn 
-    btn-outline-danger btn-sm" onclick="location.href='/excluir/<% empresa.codigo %>'"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
+    <div class="container-fluid ">
+        <h4 class="text-center mt-4">Lista Empresas</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover 
+            table-striped col-sm-8 col-lg-6 mx-auto">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < listaEmpresas.length; i++) { %>
+                        <tr>
+                            <td> <%= listaEmpresas[i].nome %> </td>
+                            <td>
+                                <button class="btn 
+            btn-outline-primary btn-sm" onclick="location.href='/editar/<% listaEmpresas[i].codigo %>'"><i
+                                        class="fas fa-pencil-alt"></i></button>
+                                <button class="btn 
+            btn-outline-danger btn-sm" onclick="location.href='/excluir/<% listaEmpresas[i].codigo %>'"><i
+                                        class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>        
     <script src="../assets/js/bootstrap.js"></script>
 </body>
 </html>

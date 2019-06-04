@@ -3,7 +3,7 @@ const Empresa = require('../model/Empresa');
 const service = require('../service/EmpresaService.js');
 
 router.get('/lista', async (req, res) => {
-		res.render('Emp-lista', { lista: await service.listar()});
+		res.render('Emp-lista', { listaEmpresas: service.listar()});
 })
 
 router.get('/novo', (req, res) => {
