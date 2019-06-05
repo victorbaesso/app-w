@@ -13,6 +13,7 @@ async function buscaPorId(id){
 	await db.collection('produtos').findOne({"id": parseInt(id)}, (erro, produto) => {
 			if(erro)
 				console.log(erro);
+				return null;
 			else
 				return produto;
 		});
@@ -45,10 +46,12 @@ async function alterar(produto){
 
 async function listar(){
 	await db.collection('produtos').find().toArray((erro, produto) => {
-		if(erro)
+		if(erro){
 			console.log(erro);
-		else
+			return [];
+		} else {
 			return produto;
+		}
 	});
 }
 

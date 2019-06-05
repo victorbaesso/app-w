@@ -11,10 +11,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, (erro, conexao) =>{
 
 async function buscaPorId(id){
 	await db.collection('registros').findOne({"id": parseInt(id)}, (erro, registro) => {
-			if(erro) 
-				console.log(erro); 
-			else 
+			if(erro){
+				console.log(erro);
+				return null;
+			} else{
 				return registro;
+			} 
 		}); 
 }
 
@@ -47,6 +49,7 @@ async function alterar(registro){
 }
 
 async function listar(){
+	console.log("Veio no listar");
 	await db.collection('registros').find().toArray((erro, registro) => {
 		if(erro){ 
 			console.log(erro); 

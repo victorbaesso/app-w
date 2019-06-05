@@ -1,18 +1,21 @@
 const router = require('express').Router();
-const service = require('../service/RegistroService');
+
 const Registro = require('../model/Registro');
 
+const RegistroService = require('../service/RegistroService.js');
+const EmpresaService = require('../service/EmpresaService.js');
+const ProdutoService = require('../service/ProdutoService.js');
 
 router.get('/lista', async (req, res) => {
-    res.render('Reg-lista', { registros: await service.listar() });
+    res.render('Reg-lista', { registros: await RegistroService.listar() });
 })
 
-router.get('/novo', (req, res) => {
-    res.render('Reg-novo');
+router.get('/novo', async (req, res) => {
+    res.render('Reg-Novo', {empresas: await EmpresaService.listar(), produtos: await ProdutoService.listar()});
 })
 
 router.post('/salvar', async (req, res) => {
-    await service.salvar(new Registro(
+    await RegistroService.salvar(new Registro(
         req.body.id || null,
         req.body.empresa,
         req.body.produto,

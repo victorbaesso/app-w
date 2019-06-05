@@ -1,6 +1,6 @@
 const Empresa = require('../model/Empresa.js');
 // falta ver como everson fez no repositories
-const repository = require('../repository/EmpresaRepository.js');
+const Repository = require('../repository/EmpresaRepository.js');
 
 var empresa = new Empresa();
 var listaempresas = [];
@@ -21,8 +21,8 @@ const salvar = function (salvarEmpresa) {
 	}
 }
 
-const listar = function () {
-	listaempresas = repository.listar();
+const listar = async function () {
+	listaempresas = await Repository.listar();
 
 	return listaempresas;
 }

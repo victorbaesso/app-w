@@ -2,15 +2,15 @@ const Registro = require('../model/Registro.js');
 const Empresa = require('../model/Empresa.js');
 const Produto = require('../model/Produto.js');
 const EmpresaService = require('../service/EmpresaService.js');
-//const ProdutoService = require('../service/ProdutoService.js');
-const Repository = require('../repository/RegistroRepository.js');
+const ProdutoService = require('../service/ProdutoService.js');
+const RegistroRepository = require('../repository/RegistroRepository.js');
 
 const buscaPorId = async (codigo) => {
-	return await Repository.buscaPorId(codigo);
+	return await RegistroRepository.buscaPorId(codigo);
 }
 
 const excluiPorId = (id) => {
-	Repository.excluiPorId(id);
+	RegistroRepository.excluiPorId(id);
 }
 
 const salvar = async function(registroToSave) {
@@ -19,31 +19,31 @@ const salvar = async function(registroToSave) {
 	console.log("codigo produto a ser buscado: " + registroToSave.produto.id);
 
 	registro = new Registro(
-		registro.id = registroToSave.id || null,
-		registro.empresa = EmpresaService.buscaPorId(registroToSave.empresa.id),
-		//registro.produto = ProdutoService.buscaPorId(registroToSave.produto.id),
-		registro.data = registroToSave.data,
-		registro.valor = registroToSave.valor
+		registroToSave.id || null, EmpresaService.buscaPorId(registroToSave.empresa.id),
+		ProdutoService.buscaPorId(registroToSave.produto.id),
+		registroToSave.data,
+		registroToSave.valor
 	);
 
 	console.log("Registro a ser salvo --> Id: " + registro.id + ", Nome da empresa: " +
 	 registro.empresa.nome + ", Nome do produto: " + registro.produto.nome + ", Valor: " + registro.valor
 	 + ", Data: " + registro.data + ";")
+	
 	await save(registro);
 }
 
 
 async function save (registro){
 	if (registro.id != null) {
-		await Repository.alterar(registro);
+		await RegistroRepository.alterar(registro);
 	} else {
 		registro.id = new Date().getTime();
-		await Repository.inserir(registro);
+		await RegistroRepository.inserir(registro);
 	}
 }
 
 const listar = async function () {
-	return await Repository.listar();
+	return await RegistroRepository.listar();
 }
 
 module.exports.buscaPorId = buscaPorId;
