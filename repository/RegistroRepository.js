@@ -26,11 +26,11 @@ function inserir(registro){
 
 function alterar(registro){
 	db.getDB().collection('registros').updateOne({
-		"id": parseInt(registros.id)},{
+		"id": parseInt(registro.id)},{
 			$set: {
 		 		"empresa": registro.empresa,
 		 		"produto": registro.produto,
-		 		"data": regsitro.data,
+		 		"data": registro.data,
 		 		"valor": registro.valor
 		 	}
 		}, (erro, res) => {
