@@ -4,8 +4,9 @@
 
 <head>
 
-	<link rel="stylesheet" href="../assets/css/bootstrap.css">
-	<link rel="stylesheet" href="../assets/css/style-paginas.css">
+		<link rel="stylesheet" href="../assets/css/bootstrap.css">
+		<link rel="stylesheet" href="../assets/css/style-paginas.css">
+	
 	
 </head>
 
@@ -37,7 +38,16 @@
 			</li>
 		</ul>
 	</nav>
-
+	<div class="row justify-content-center mt-5">
+        <form class="col-sm-7 col-lg-4" action="/produto/salvar" method="POST">
+          <h4>Novo Cadastro de Produto</h4>
+              <div class="form-group">
+                <input placeholder="Nome" type="text" class="form-control" name="nome" id="nome">
+              </div>
+						<button type="submit" class="btn btn-primary ">Salvar</button>
+						
+        </form>
+      </div>
 	<footer>
 		Grupo:<br>
 		EVERSON SIGNORI, JOÃO VICTOR BAESSO, LUCAS INACIO BERLANDA,
