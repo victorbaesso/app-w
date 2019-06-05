@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <%= listaEmpresas %>
     <div class="container-fluid ">
         <h4 class="text-center mt-4">Lista Empresas</h4>
         <div class="table-responsive">
@@ -23,23 +24,24 @@
                 </thead>
                 <tbody>
                     <% for(var i = 0; i < listaEmpresas.length; i++) { %>
-                        <tr>
-                            <td> <%= listaEmpresas[i].nome %> </td>
-                            <td>
-                                <button class="btn 
+                    <tr>
+                        <td> <%= listaEmpresas[i].nome %> </td>
+                        <td>
+                            <button class="btn 
             btn-outline-primary btn-sm" onclick="location.href='/editar/<% listaEmpresas[i].codigo %>'"><i
-                                        class="fas fa-pencil-alt"></i></button>
-                                <button class="btn 
+                                    class="fas fa-pencil-alt"></i></button>
+                            <button class="btn 
             btn-outline-danger btn-sm" onclick="location.href='/excluir/<% listaEmpresas[i].codigo %>'"><i
-                                        class="far fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
+                                    class="far fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
                     <% } %>
                 </tbody>
             </table>
         </div>
-    </div>        
-    
+    </div>
+
     <script src="../assets/js/bootstrap.js"></script>
 </body>
+
 </html>

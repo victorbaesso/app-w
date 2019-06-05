@@ -15,7 +15,7 @@ router.post('/salvar', (req, res) => {
         req.body.id || null,
         req.body.nome
     ),
-	 res.redirect('Emp-lista'));
+	 res.redirect('/empresa/lista'));
  })
 
 module.exports = router;
