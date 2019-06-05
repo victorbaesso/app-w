@@ -61,11 +61,7 @@ async function listar(){
 }
 
 module.exports.buscaPorId = buscaPorId;
-
 module.exports.excluiPorId = excluiPorId;
-
 module.exports.inserir = inserir;
-
 module.exports.alterar = alterar;
-
 module.exports.listar = listar;

@@ -1,15 +1,15 @@
 const router = require('express').Router();
-//const repo = require('../model/Produto');
+const repo = require('../model/Produto');
 const Produto = require('../model/Produto')
 
 router.get('/lista', async (req, res) => {
-  //  let produtos = await repo.getTodosRegistros();
+    //let produtos = await repo.getTodosRegistros();
 let produtos = []; 
-   res.render('produto/lista', { lista: produtos });
+   res.render('Prod-lista', { lista: produtos });
 })
 
 router.get('/novo', (req, res) => {
-    res.render('produto/novo');
+    res.render('Prod-novo');
 })
 
 //router.post('/salvar', (req, res) => {

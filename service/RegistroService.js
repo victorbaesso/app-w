@@ -5,15 +5,15 @@ const EmpresaService = require('../service/EmpresaService.js');
 const ProdutoService = require('../service/ProdutoService.js');
 const RegistroRepository = require('../repository/RegistroRepository.js');
 
-const buscaPorId = async (codigo) => {
-	return await RegistroRepository.buscaPorId(codigo);
+const buscaPorId = async (id) => {
+	return await RegistroRepository.buscaPorId(id);
 }
 
 const excluiPorId = (id) => {
 	RegistroRepository.excluiPorId(id);
 }
 
-const salvar = async function(registroToSave) {
+const salvar = function(registroToSave) {
 
 	console.log("codigo empresa a ser buscado: " + registroToSave.empresa.id);
 	console.log("codigo produto a ser buscado: " + registroToSave.produto.id);
@@ -27,8 +27,8 @@ const salvar = async function(registroToSave) {
 
 	console.log("Registro a ser salvo --> Id: " + registro.id + ", Nome da empresa: " +
 	 registro.empresa.nome + ", Nome do produto: " + registro.produto.nome + ", Valor: " + registro.valor
-	 + ", Data: " + registro.data + ";")
-	
+	 + ", Data: " + registro.data + ";");
+
 	await save(registro);
 }
 
@@ -46,10 +46,7 @@ const listar = async function () {
 	return await RegistroRepository.listar();
 }
 
-module.exports.buscaPorId = buscaPorId;
-
-module.exports.excluiPorId = excluiPorId;
-
+module.exports.findOne = findOne;
+module.exports.excluir = excluir;
 module.exports.salvar = salvar;
-
 module.exports.listar = listar;

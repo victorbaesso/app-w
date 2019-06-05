@@ -1,17 +1,18 @@
 var express = require('express');
 const ejs = require('ejs');
-const bodyParser = require("body-parser");// pegar parametros do request
+const bodyParser = require("body-parser");
 
+const db = require("./repository/DBConnection");
 const loginService = require("./service/LoginService");
+
 var app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/assets', express.static('assets')); // arquivos sem controller
+app.use('/assets', express.static('assets'));
 
-//app.use('/home', require('./controllers/HomeController'));
 
 app.use('/produto', require('./controller/ProdutoController'));
 app.use('/empresa', require('./controller/EmpresaController'));
@@ -32,7 +33,10 @@ app.get('/logout' , (req, res)=>{
 });
 
 app.get('/home',(req, res)=>{
-  res.render('home', {retorno: null});
+  res.render('home');
 })
 
-app.listen(3000, ()=> console.log('Listening on localhost:3000'));
+db.initDB(() => {
+  app.listen(3000);
+  console.log('Listening on localhost:3000');
+});
