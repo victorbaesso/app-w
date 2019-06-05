@@ -1,17 +1,15 @@
+const db = require('./DBConnection');
 
-
-<<<<<<< HEAD
 async function buscaPorId(id){
 	await db.collection('empresas').findOne({"id": parseInt(id)}, (erro, empresa) => {
-			if(erro){
-				console.log(erro);
-				return null;
-			}
-			else
-				return empresa;
-		});
-=======
-const db = require('./DBConnection');
+		if(erro){
+			console.log(erro);
+			return null;
+		} else{
+			return empresa;
+		}
+	});
+}
 
 const salvar = async function(empresa){
 	if (empresa.id != null) {
@@ -20,7 +18,6 @@ const salvar = async function(empresa){
 		empresa.id = new Date().getTime();
 		await inserir(empresa);
 	}
->>>>>>> 4d8bba00a2b35d45e87c2e0b0252a2718385226b
 }
 
 const excluir = function(id){
@@ -48,15 +45,9 @@ function alterar(empresa){
   	);
 }
 
-<<<<<<< HEAD
 async function listar(){
 	await db.collection('empresas').find().toArray((erro, empresa) => {
 		if(erro){
-=======
-const listar = async function(){
-	await db.getDB().collection('empresas').find().toArray((erro, empresa) => {
-		if(erro)
->>>>>>> 4d8bba00a2b35d45e87c2e0b0252a2718385226b
 			console.log(erro);
 			return [];
 		} else{

@@ -13,7 +13,7 @@ const excluiPorId = (id) => {
 	RegistroRepository.excluiPorId(id);
 }
 
-const salvar = function(registroToSave) {
+const salvar = async function(registroToSave) {
 
 	console.log("codigo empresa a ser buscado: " + registroToSave.empresa.id);
 	console.log("codigo produto a ser buscado: " + registroToSave.produto.id);
