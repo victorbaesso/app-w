@@ -9,6 +9,7 @@ async function buscaPorId(id){
 			return produto;
 		}
 	});
+}
 
 const salvar = function(produto){
 	if (produto.id != null) {
@@ -57,11 +58,13 @@ const listar = async function(){
 
 const findOne = async function(id){
 	await db.getDB().collection('produtos').findOne({"id": parseInt(id)}, (erro, produto) => {
-			if(erro)
-				console.log(erro);
-			else
-				return produto;
-		});
+		if(erro){
+			console.log(erro);
+			return null;	
+		} else {
+			return produto;
+		}
+	});
 }
 
 module.exports.findOne = findOne;
