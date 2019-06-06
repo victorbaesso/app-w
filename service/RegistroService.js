@@ -43,10 +43,14 @@ async function save (registro){
 }
 
 const listar = async function () {
-	return await RegistroRepository.listar();
+	var listinha = [];
+	listinha = await RegistroRepository.listar();
+	console.log("---Lista Service---");
+	console.log(listinha);
+	return listinha;
 }
 
-module.exports.findOne = findOne;
-module.exports.excluir = excluir;
+module.exports.buscaPorId = buscaPorId;
+module.exports.excluiPorId = excluiPorId;
 module.exports.salvar = salvar;
 module.exports.listar = listar;

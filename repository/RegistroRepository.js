@@ -1,6 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://aula_2019_1:aula2019_1xxe@cluster0-ptgti.mongodb.net/test?retryWrites=true';
+const url = 'mongodb://localhost:27017';
+//'mongodb+srv://aula_2019_1:aula2019_1xxe@cluster0-ptgti.mongodb.net/test?retryWrites=true'
 var db;
+
+//const db = require('./DBConnection');
+
 
 MongoClient.connect(url, { useNewUrlParser: true }, (erro, conexao) =>{
 	if (erro) { 
@@ -50,14 +54,7 @@ async function alterar(registro){
 
 async function listar(){
 	console.log("Veio no listar");
-	await db.collection('registros').find().toArray((erro, registro) => {
-		if(erro){ 
-			console.log(erro); 
-			return [];
-		}else{ 
-			return registro;
-		}
-	}); 
+	return await db.collection('registros').find().toArray(); 
 }
 
 module.exports.buscaPorId = buscaPorId;

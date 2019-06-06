@@ -46,14 +46,8 @@ function alterar(produto){
 }
 
 const listar = async function(){
-	await db.getDB().collection('produtos').find().toArray((erro, produto) => {
-		if(erro){
-			console.log(erro);
-			return [];
-		} else {
-			return produto;
-		}
-	});
+	return await db.getDB().collection('produtos').find().toArray();
+}
 
 
 const findOne = async function(id){

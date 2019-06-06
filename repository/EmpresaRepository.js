@@ -46,14 +46,7 @@ function alterar(empresa){
 }
 
 async function listar(){
-	await db.collection('empresas').find().toArray((erro, empresa) => {
-		if(erro){
-			console.log(erro);
-			return [];
-		} else{
-			return empresa;
-		}
-	});
+	return await db.collection('empresas').find().toArray();
 }
 
 const findOne = async function(id){
