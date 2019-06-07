@@ -13,6 +13,7 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/assets', express.static('assets'));
 
+app.use('/master', require('./controller/BixoController'));
 app.use('/produto', require('./controller/ProdutoController'));
 app.use('/empresa', require('./controller/EmpresaController'));
 app.use('/registro', require('./controller/RegistroController'));

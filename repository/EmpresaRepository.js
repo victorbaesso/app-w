@@ -1,49 +1,48 @@
 const db = require('./DBConnection');
 
-async function buscaPorId(id){
-	return await db.collection('empresas').findOne({"id": parseInt(id)});
+const salvar = async function(empresa) {
+  if (empresa.id != null) {
+    await alterar(empresa);
+  } else {
+    empresa.id = new Date().getTime();
+    await inserir(empresa);
+  }
 }
 
-const salvar = async function(empresa){
-	if (empresa.id != null) {
-		await alterar(empresa);
-	} else {
-		empresa.id = new Date().getTime();
-		await inserir(empresa);
-	}
+const excluir = function(id) {
+  db.getDB().collection('empresas').deleteOne({
+    "id": parseInt(id)
+  }, (erro, result) => {
+    erro ? console.log(erro) : console.log("Empresa excluido com sucesso.");
+  });
 }
 
-const excluir = function(id){
-	console.log("Id do empresa a ser excluido: " + parseInt(id));
-	db.getDB().collection('empresas').deleteOne({"id": parseInt(id)}, (erro, result) => {
-		erro ? console.log(erro) : console.log("empresa excluido com sucesso." + result);
-	});
+function inserir(empresa) {
+  db.getDB().collection('empresas').insertOne(empresa, (erro, result) => {
+    erro ? console.log(erro) : console.log("Empresa salvo com sucesso.");
+  });
 }
 
-function inserir(empresa){
-	db.getDB().collection('empresas').insertOne(empresa, (erro, result) => {
-			erro ? console.log(erro) : console.log("empresa salvo com sucesso." + result);
-		});
+function alterar(empresa) {
+  db.getDB().collection('empresas').updateOne({
+    "id": parseInt(empresa.id)
+  }, {
+    $set: {
+      "nome": empresa.nome
+    }
+  }, (erro, res) => {
+    erro ? console.log(erro) : console.log("Empresa alterado com Sucesso.");
+  });
 }
 
-function alterar(empresa){
-	db.getDB().collection('empresas').updateOne({
-		"id": parseInt(empresa.id)},{
-			$set: {
-		 		"nome": empresa.nome
-		 	}
-		}, (erro, res) => {
-				erro ? console.log(erro) : console.log("empresa alterado com Sucesso." + res);
-  		}
-  	);
+async function listar() {
+  return await db.getDB().collection('empresas').find().toArray();
 }
 
-async function listar(){
-	return await db.getDB().collection('empresas').find().toArray();
-}
-
-const findOne = async function(id){
-	return await db.getDB().collection('empresas').findOne({"id": parseInt(id)});
+const findOne = async function(id) {
+  return await db.getDB().collection('empresas').findOne({
+    "id": parseInt(id)
+  });
 }
 
 module.exports.findOne = findOne;

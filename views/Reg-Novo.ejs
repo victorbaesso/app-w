@@ -1,86 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lista Empresas</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
-    <link rel="stylesheet" href="/assets/css/style-paginas.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand text-white">App-W Writer</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="/home">Home</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/empresa/lista">Empresa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/produto/lista">Produto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/registro/lista">Registro</a>
-                </li>
-            </ul>
-        </div>
-        <ul class="navbar-nav">
-            <li class="nav-item pull-right">
-                <a class="nav-link" href="/login">Logout</a>
-            </li>
-        </ul>
-    </nav>
-    <hr class="my-4">
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <form method="post" action="salvar">
-          <h4>Novo Registro</h4>
-              <div class="form-group">
-                  <input type="hidden" name="registro" value="<%= registro.id %>">
-                  <select class="form-control" name="empresa" value="<%= registro.empresa %>"  required>
-                    <% if(empresas != null){
-                    for(var i = 0; i < empresas.length; i++){ %>
-                    <option value="<%= empresas[i].id %>"><%= empresas[i].nome %></option>
-                    <% }
-                  } %>
-                  </select>
-                </div>
-              <div class="form-group">
-                  <select class="form-control" name="produto" value="<%= registro.produto %>" required>
-                    <% if(produtos != null){
-                    for(var i = 0; i < produtos.length; i++){ %>
-                    <option value="<%= produtos[i].id %>"><%= produtos[i].nome %></option>
-                    <% }
-                  } %>
-                  </select>
-                </div>
-              <div class="form-group">
-                <input type="date" class="form-control" value="registro.data" name="data" value="<%= registro.data %>" required>                
-              </div>
-              <div class="form-group">
-                <input id="valor" placeholder="Valor" type="text" class="form-control" value="<%= registro.valor %>" name="valor" required>  
-              </div>
-            <button type="submit" class="btn btn-primary pull-right">Salvar</button>
-        </form>
+<%- include _header.ejs %>
+
+<div class="row justify-content-center mt-4 mx-0">
+  <h2 class="display-4">Registro</h2>
+</div>
+<div class="row justify-content-center mt-4 mx-0">
+  <form class="col-sm-8 col-md-6 col-lg-4" method="post" action="/registro/salvar">
+    <div class="form-group">
+      <input type="hidden" name="id" value="<%= registro.id %>">
+      <input type="hidden" id="codEmpresa" value="<%= registro.empresa != null ? registro.empresa.id : null %>">
+      <select class="form-control" id="empresaSelect" name="empresa" required>
+        <option>Selecione uma empresa</option>
+        <% if(empresas != null){
+          for(var i = 0; i < empresas.length; i++){ %>
+            <option value="<%= empresas[i].id %>"><%= empresas[i].nome %></option>
+          <% }
+        } %>
+      </select>
     </div>
-  </div>
-    <footer>
-        Grupo:<br>
-        EVERSON SIGNORI, JOÃO VICTOR BAESSO, LUCAS INACIO BERLANDA,
-        LUIZ HENRIQUE RIGO GRIEBELER, MATEUS DEIVIDI BELTRAME,
-        VITOR PAULO DE SA GALVAN.<br>
-        Todos os direitos reservados ®
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="/assets/js/bootstrap.js"></script>
-    <script src="/assets/js/jquery.inputmask.js"></script>
-    <script src="/assets/js/mask.js"></script>
-</body>
-</html>
+    <div class="form-group">
+      <input type="hidden" id="codProduto" value="<%= registro.produto != null ? registro.produto.id : null  %>">
+      <select class="form-control" id="produtoSelect" name="produto" required>
+        <option>Selecione um produto</option>
+        <% if(produtos != null){
+          for(var i = 0; i < produtos.length; i++){ %>
+            <option value="<%= produtos[i].id %>"><%= produtos[i].nome %></option>
+          <% }
+        } %>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="date" class="form-control" id="dataRegistro" name="data" required value="<%= registro.data %>" placeholder="Data">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control"  id="valorRegistro" name="valor" required value="<%= registro.valor %>" placeholder="Valor">
+    </div>
+    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+  </form>
+</div>
+</div>
+
+<%- include _footer.ejs %>

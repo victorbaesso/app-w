@@ -1,0 +1,13 @@
+.p-container {
+  position: relative;
+  min-height: 58vh;
+}
+.content-wrap {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+.footer {
+  bottom: 0;
+  margin-top: 0px;
+}

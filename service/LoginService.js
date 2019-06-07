@@ -19,7 +19,7 @@ const login = (req, res)=> {
     if (canLogin(user, senha)) {
       res.redirect('/home');
     }else{
-      res.render('login', {retorno: "Email ou Senha invalidos."});
+      res.render('login', {retorno: "Email ou Senha inválidos."});
     }
 }
 
@@ -31,7 +31,7 @@ function canLogin(user, senha){
   if (usuarios.length == 0) {
     return false;
   } else {
-    console.log(usuarios[0].user);
+    console.log("logado como: " + usuarios[0].user);
     return true;
   }
 }

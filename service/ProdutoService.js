@@ -1,30 +1,25 @@
 const Produto = require('../model/Produto.js');
-const repository = require('../repository/ProdutoRepository.js');
+const Repository = require('../repository/ProdutoRepository.js');
 
-
-var produto = new Produto();
-var listaProdutos = [];
-
-const salvar = function (salvarProduto) {
-	repository.salvar(salvarProduto);
+const salvar = function(salvarProduto) {
+  Repository.salvar(salvarProduto);
 }
 
-const listar = async function () {
-	return await repository.listar();
+const listar = async function() {
+  return await Repository.listar();
 }
 
 const excluir = (codigo) => {
-	repository.excluir(codigo);
+  Repository.excluir(codigo);
 }
 
-const buscaPorId = async (codigo) => {
-	return await repository.findOne(codigo);
+const findOne = async (codigo) => {
+  return await Repository.findOne(codigo);
 }
-
 
 module.exports.salvar = salvar;
 
-module.exports.buscaPorId = buscaPorId;
+module.exports.findOne = findOne;
 
 module.exports.listar = listar;
 

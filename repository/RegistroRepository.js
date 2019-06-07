@@ -1,44 +1,54 @@
 const db = require('./DBConnection');
 
-async function buscaPorId(id){
-	return await db.getDB().collection('registros').findOne({"id": parseInt(id)}); 
+const findOne = async function(id) {
+  return await db.getDB().collection('registros').findOne({
+    "id": parseInt(id)
+  });
 }
 
-const excluiPorId = (id)=>{
-	console.log("Id do Registro a ser excluido: " + parseInt(id));
-	db.getDB().collection('registros').deleteOne({"id": parseInt(id)}, (erro, result) => {
-		erro ? console.log(erro) : console.log("Registro excluido com sucesso." + result);
-	}); 
+const excluir = (id) => {
+  db.getDB().collection('registros').deleteOne({
+    "id": parseInt(id)
+  }, (erro, result) => {
+    erro ? console.log(erro) : console.log("Registro excluido com sucesso.");
+  });
 }
 
-async function inserir(Registro){
-	await db.getDB().collection('registros').insertOne(Registro, (erro, result) => {
-			erro ? console.log(erro) : console.log("Registro salvo com sucesso." + result);
-		});	
+const salvar = function(registro) {
+  if (registro.id != null) {
+    alterar(registro);
+  } else {
+    registro.id = new Date().getTime();
+    inserir(registro);
+  }
 }
 
-async function alterar(registro){
-	await db.getDB().collection('registros').updateOne({
-		"id": parseInt(registros.id)},{ 
-			$set: {
-		 		"empresa": registro.empresa, 
-		 		"produto": registro.produto,
-		 		"data": regsitro.data, 
-		 		"valor": registro.valor
-		 	}
-		}, (erro, res) => {
-				erro ? console.log(erro) : console.log("Registro alterado com Sucesso." + res);
-  		}
-  	);
+function inserir(Registro) {
+  db.getDB().collection('registros').insertOne(Registro, (erro, result) => {
+    erro ? console.log(erro) : console.log("Registro salvo com sucesso.");
+  });
 }
 
-async function listar(){
-	console.log("Veio no listar");
-	return await db.getDB().collection('registros').find().toArray(); 
+function alterar(registro) {
+  db.getDB().collection('registros').updateOne({
+    "id": parseInt(registro.id)
+  }, {
+    $set: {
+      "empresa": registro.empresa,
+      "produto": registro.produto,
+      "data": registro.data,
+      "valor": registro.valor
+    }
+  }, (erro, res) => {
+    erro ? console.log(erro) : console.log("Registro alterado com Sucesso.");
+  });
 }
 
-module.exports.buscaPorId = buscaPorId;
-module.exports.excluiPorId = excluiPorId;
-module.exports.inserir = inserir;
-module.exports.alterar = alterar;
+async function listar() {
+  return await db.getDB().collection('registros').find().toArray();
+}
+
+module.exports.findOne = findOne;
+module.exports.excluir = excluir;
+module.exports.salvar = salvar;
 module.exports.listar = listar;

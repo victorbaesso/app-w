@@ -1,6 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
-const uri = 'mongodb://localhost:27017/impostos';
+const uri = 'mongodb+srv://aula_2019_1:aula2019_1xxe@cluster0-ptgti.mongodb.net/test?retryWrites=true';
 
+// <<<=== Producao ===>>> mongodb+srv://aula_2019_1:aula2019_1xxe@cluster0-ptgti.mongodb.net/test?retryWrites=true
+// <<<=== Desenvolvimento ===>>>mongodb://localhost:27017/impostos
 var db;
 
 const initDB = function(callback) {

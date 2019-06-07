@@ -1,65 +1,15 @@
-<!DOCTYPE html>
+<%- include _header.ejs %>
+<div class="row justify-content-center mt-4 mx-0">
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">App-W Writter</h1>
+    <p class="lead text-center">Apenas Escrita</p>
+    <hr class="my-4">
+    <p>Aplicativo para análisar a variação de impostos na relação empresa - produto.</p>
+    <p>Composto de dois módulos, um responsável por inserir os dados no banco, com um crud de Produto, Empresa e Registro (que representa o valor do produto em determinada empresa na data avaliada).</p>
+    <p>E outro (App-R Reader) responsável pela leitura dos dados, e visualização em forma de gráficos, que indicam determinados  índices.</p>
 
-<html lang="br">
+    <p>Este é o modulo de escrita, que possui um CRUD completo de Produto, Empresa e Registro.</p>
+  </div>
+</div>
 
-<head>
-	
-	<title>Home</title>
-	<link rel="stylesheet" href="../assets/css/bootstrap.css">
-	<link rel="stylesheet" href="../assets/css/style-home.css">
-
-</head>
-
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand text-white">App-W Writer</a>
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item ">
-					<a class="nav-link" href="/home">Home</a>
-				</li>
-				<li class="nav-item ">
-					<a class="nav-link" href="/empresa/lista">Empresa</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/produto/lista">Produto</a>
-				</li>
-				<li class="nav-item ">
-					<a class="nav-link" href="/registro/lista">Registro</a>
-				</li>
-			</ul>
-		</div>
-		<ul class="navbar-nav">
-			<li class="nav-item pull-right">
-				<a class="nav-link" href="/login">Logout</a>
-			</li>
-		</ul>
-	</nav>
-	
-
-
-
-	<footer>
-		Grupo:<br>
-		EVERSON SIGNORI, JOÃO VICTOR BAESSO, LUCAS INACIO BERLANDA,
-		LUIZ HENRIQUE RIGO GRIEBELER, MATEUS DEIVIDI BELTRAME,
-		VITOR PAULO DE SA GALVAN.<br>
-		Todos os direitos reservados ®
-	</footer>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
-		<script src="../assets/js/bootstrap.js"></script>
-</body>
-
-</html>
+<%- include _footer.ejs %>
