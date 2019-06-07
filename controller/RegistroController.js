@@ -11,7 +11,17 @@ router.get('/lista', async (req, res) => {
 })
 
 router.get('/novo', async (req, res) => {
-    res.render('Reg-Novo', {empresas: await EmpresaService.listar(), produtos: await ProdutoService.listar()});
+    res.render('Reg-Novo', {empresas: await EmpresaService.listar(), produtos: await ProdutoService.listar(), registro : new Registro()});
+})
+
+router.get('/editar/:id', async (req, res) => {
+    console.log(await RegistroService.buscaPorId(req.params.id));
+    res.render('Reg-Novo', { registro : RegistroService.buscaPorId(req.params.id), empresas: await EmpresaService.listar(), produtos: await ProdutoService.listar()});
+})
+
+router.get('/excluir/:id', async (req, res) => {
+    RegistroService.excluiPorId(req.params.id);
+    res.redirect('/registro/lista');
 })
 
 router.post('/salvar', async (req, res) => {
@@ -19,10 +29,10 @@ router.post('/salvar', async (req, res) => {
         req.body.id || null,
         req.body.empresa,
         req.body.produto,
-        req.body.data,
+        new Date(req.body.data),
         req.body.valor
     ), 
-    res.redirect('/Reg-lista'));
+    res.redirect('/registro/lista'));
 })
 
 module.exports = router;

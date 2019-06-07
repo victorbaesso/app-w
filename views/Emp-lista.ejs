@@ -25,7 +25,7 @@
                     <a class="nav-link" href="/home">Home</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="/empresa/novo">Empresa</a>
+                    <a class="nav-link" href="/empresa/lista">Empresa</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/produto/lista">Produto</a>
@@ -41,37 +41,38 @@
             </li>
         </ul>
     </nav>
-
-    <div class="container-fluid ">
-        <h4 class="text-center mt-4">Lista Empresas</h4>
+    <hr class="my-4">
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+        <div class="form-group">
+            <button type="button" class="btn btn-dark" onclick="window.location.href='novo';">Nova Empresa</button>
+        </div>  
         <div class="table-responsive">
-            <table class="table table-bordered table-hover 
-            table-striped col-sm-8 col-lg-6 mx-auto">
-                <thead>
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Nome</th>
                         <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Opções</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% for(var i = 0; i < listaEmpresas.length; i++) { %>
-                    <tr>
-                        <td> <%= listaEmpresas[i].nome %> </td>
-                        <td>
-                            <button class="btn 
-            btn-outline-primary btn-sm" onclick="location.href='/editar/<% listaEmpresas[i].codigo %>'"><i
-                                    class="fas fa-pencil-alt"></i></button>
-                            <button class="btn 
-            btn-outline-danger btn-sm" onclick="location.href='/excluir/<% listaEmpresas[i].codigo %>'"><i
-                                    class="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <% } %>
+                    <% if(listaEmpresas != null){
+                        for(var i = 0; i < listaEmpresas.length; i++){ %>
+                        <tr>
+                            <th><%= listaEmpresas[i].id %></th>
+                            <td><%= listaEmpresas[i].nome %></td>
+                            <td><button class="btn btn-outline-primary btn-sm" onclick="location.href='editar/<%= listaEmpresas[i].id %>'"><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn btn-outline-danger btn-sm" onclick="location.href='excluir/<%= listaEmpresas[i].id %>'"><i class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    <%} 
+                } %>
                 </tbody>
             </table>
         </div>
     </div>
-
+    </div>
     <footer>
         Grupo:<br>
         EVERSON SIGNORI, JOÃO VICTOR BAESSO, LUCAS INACIO BERLANDA,
@@ -79,8 +80,6 @@
         VITOR PAULO DE SA GALVAN.<br>
         Todos os direitos reservados ®
     </footer>
-
     <script src="../assets/js/bootstrap.js"></script>
 </body>
-
 </html>

@@ -3,11 +3,11 @@ const Empresa = require('../model/Empresa');
 const service = require('../service/EmpresaService.js');
 
 router.get('/lista', async (req, res) => {
-		res.render('Emp-lista', { listaEmpresas: service.listar()});
+		res.render('Emp-lista', { listaEmpresas: await service.listar()});
 })
 
 router.get('/novo', (req, res) => {
-    res.render('Emp-novo');
+    res.render('Emp-novo', {empresa : new Empresa()});
 })
 
 router.post('/salvar', (req, res) => {
@@ -17,5 +17,13 @@ router.post('/salvar', (req, res) => {
     ),
 	 res.redirect('/empresa/lista'));
  })
+router.get('/editar/:id', async (req, res) => {
+    res.render('Emp-novo', { empresa : await service.buscaPorId(req.params.id)});
+})
+
+router.get('/excluir/:id', async (req, res) => {
+    service.excluir(req.params.id);
+    res.redirect('/empresa/lista');
+})
 
 module.exports = router;

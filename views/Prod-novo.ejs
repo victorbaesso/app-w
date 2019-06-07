@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="br">
-
 <head>
 
-		<link rel="stylesheet" href="../assets/css/bootstrap.css">
-		<link rel="stylesheet" href="../assets/css/style-paginas.css">
-	
-	
+	<link rel="stylesheet" href="/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="/assets/css/style-paginas.css">
 </head>
-
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand text-white">App-W Writer</a>
-
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 		<div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item ">
 					<a class="nav-link" href="/home">Home</a>
 				</li>
 				<li class="nav-item ">
-					<a class="nav-link" href="/empresa/novo">Empresa</a>
+					<a class="nav-link" href="/empresa/lista">Empresa</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/produto/lista">Produto</a>
@@ -45,10 +38,10 @@
         <form class="col-sm-7 col-lg-4" action="/produto/salvar" method="POST">
           <h4>Novo Cadastro de Produto</h4>
               <div class="form-group">
-                <input placeholder="Nome" type="text" class="form-control" name="nome" id="nome">
+              	<input type="hidden" name="id" value="<%=produto.id %>">
+                <input placeholder="Nome" type="text" class="form-control" name="nome" value="<%=produto.nome%>">
               </div>
-						<button type="submit" class="btn btn-primary ">Salvar</button>
-						
+				<button type="submit" class="btn btn-primary ">Salvar</button>
         </form>
       </div>
 	<footer>

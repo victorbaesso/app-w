@@ -9,17 +9,22 @@ const salvar = function (salvarProduto) {
 	repository.salvar(salvarProduto);
 }
 
-const listar = function () {
-	listaProdutos = repository.listar();
-
-	return listaProdutos;
+const listar = async function () {
+	return await repository.listar();
 }
 
 const excluir = (codigo) => {
 	repository.excluir(codigo);
 }
 
+const buscaPorId = async (codigo) => {
+	return await repository.findOne(codigo);
+}
+
+
 module.exports.salvar = salvar;
+
+module.exports.buscaPorId = buscaPorId;
 
 module.exports.listar = listar;
 

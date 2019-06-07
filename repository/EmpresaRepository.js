@@ -1,14 +1,7 @@
 const db = require('./DBConnection');
 
 async function buscaPorId(id){
-	await db.collection('empresas').findOne({"id": parseInt(id)}, (erro, empresa) => {
-		if(erro){
-			console.log(erro);
-			return null;
-		} else{
-			return empresa;
-		}
-	});
+	return await db.collection('empresas').findOne({"id": parseInt(id)});
 }
 
 const salvar = async function(empresa){
@@ -28,6 +21,7 @@ const excluir = function(id){
 }
 
 function inserir(empresa){
+	console.log('veio no inserir');
 	db.getDB().collection('empresas').insertOne(empresa, (erro, result) => {
 			erro ? console.log(erro) : console.log("empresa salvo com sucesso." + result);
 		});
@@ -46,16 +40,12 @@ function alterar(empresa){
 }
 
 async function listar(){
-	return await db.collection('empresas').find().toArray();
+	console.log(await db.getDB().collection('empresas').find().toArray());
+	return await db.getDB().collection('empresas').find().toArray();
 }
 
 const findOne = async function(id){
-	await db.getDB().collection('empresas').findOne({"id": parseInt(id)}, (erro, empresa) => {
-			if(erro)
-				console.log(erro);
-			else
-				return empresa;
-		});
+	return await db.getDB().collection('empresas').findOne({"id": parseInt(id)});
 }
 
 module.exports.findOne = findOne;

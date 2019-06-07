@@ -5,18 +5,22 @@ var listaempresas = [];
 const salvar = function (salvarEmpresa) {
 
 	var empresa = new Empresa(salvarEmpresa.id || null, salvarEmpresa.nome);
-	repository.salvar(empresa);
+	Repository.salvar(empresa);
 }
 
 const listar = async function () {
-	listaempresas = await Repository.listar();
-	return listaempresas;
+	return await Repository.listar();
 }
 
 const excluir = (codigo) => {
-	repository.excluir(codigo);
+	Repository.excluir(codigo);
+}
+
+const buscaPorId = async (codigo) => {
+	return await Repository.findOne(codigo);
 }
 
 module.exports.salvar = salvar;
 module.exports.listar = listar;
 module.exports.excluir = excluir;
+module.exports.buscaPorId = buscaPorId;

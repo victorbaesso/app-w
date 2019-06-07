@@ -1,44 +1,24 @@
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
-//'mongodb+srv://aula_2019_1:aula2019_1xxe@cluster0-ptgti.mongodb.net/test?retryWrites=true'
-var db;
-
-//const db = require('./DBConnection');
-
-
-MongoClient.connect(url, { useNewUrlParser: true }, (erro, conexao) =>{
-	if (erro) { 
-		return console.log(erro);
-	}	
-	db = conexao.db("aula_veiculos");
-});
+const db = require('./DBConnection');
 
 async function buscaPorId(id){
-	await db.collection('registros').findOne({"id": parseInt(id)}, (erro, registro) => {
-			if(erro){
-				console.log(erro);
-				return null;
-			} else{
-				return registro;
-			} 
-		}); 
+	return await db.getDB().collection('registros').findOne({"id": parseInt(id)}); 
 }
 
 const excluiPorId = (id)=>{
 	console.log("Id do Registro a ser excluido: " + parseInt(id));
-	db.collection('registros').deleteOne({"id": parseInt(id)}, (erro, result) => {
+	db.getDB().collection('registros').deleteOne({"id": parseInt(id)}, (erro, result) => {
 		erro ? console.log(erro) : console.log("Registro excluido com sucesso." + result);
 	}); 
 }
 
 async function inserir(Registro){
-	await db.collection('registros').insertOne(Registro, (erro, result) => {
+	await db.getDB().collection('registros').insertOne(Registro, (erro, result) => {
 			erro ? console.log(erro) : console.log("Registro salvo com sucesso." + result);
 		});	
 }
 
 async function alterar(registro){
-	await db.collection('registros').updateOne({
+	await db.getDB().collection('registros').updateOne({
 		"id": parseInt(registros.id)},{ 
 			$set: {
 		 		"empresa": registro.empresa, 
@@ -54,7 +34,7 @@ async function alterar(registro){
 
 async function listar(){
 	console.log("Veio no listar");
-	return await db.collection('registros').find().toArray(); 
+	return await db.getDB().collection('registros').find().toArray(); 
 }
 
 module.exports.buscaPorId = buscaPorId;

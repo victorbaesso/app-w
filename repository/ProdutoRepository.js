@@ -51,14 +51,7 @@ const listar = async function(){
 
 
 const findOne = async function(id){
-	await db.getDB().collection('produtos').findOne({"id": parseInt(id)}, (erro, produto) => {
-		if(erro){
-			console.log(erro);
-			return null;	
-		} else {
-			return produto;
-		}
-	});
+	return await db.getDB().collection('produtos').findOne({"id": parseInt(id)});
 }
 
 module.exports.findOne = findOne;
