@@ -7,6 +7,6 @@
                 'radixPoint': ",",
                 'digitsOptional': false,
                 'allowMinus': false,
-                'prefix': 'R$ '
+                'prefix': ''
     });
 })

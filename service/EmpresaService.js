@@ -3,7 +3,6 @@ const Repository = require('../repository/EmpresaRepository.js');
 var listaempresas = [];
 
 const salvar = function (salvarEmpresa) {
-
 	var empresa = new Empresa(salvarEmpresa.id || null, salvarEmpresa.nome);
 	Repository.salvar(empresa);
 }

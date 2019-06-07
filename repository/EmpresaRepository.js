@@ -21,7 +21,6 @@ const excluir = function(id){
 }
 
 function inserir(empresa){
-	console.log('veio no inserir');
 	db.getDB().collection('empresas').insertOne(empresa, (erro, result) => {
 			erro ? console.log(erro) : console.log("empresa salvo com sucesso." + result);
 		});
@@ -40,7 +39,6 @@ function alterar(empresa){
 }
 
 async function listar(){
-	console.log(await db.getDB().collection('empresas').find().toArray());
 	return await db.getDB().collection('empresas').find().toArray();
 }
 
